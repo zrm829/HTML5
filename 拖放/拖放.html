@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖放</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    drag和drop 拖放
+    首先，为了使元素可拖动，把 draggable 属性设置为 true ：
+    触发的事件：dragstart和dragover
+    dataTransfer.setData('数据类型','数据值') 方法设置被拖数据的数据类型和值：
+    ondragover 事件规定在何处放置被拖动的数据。
+    默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+    这要通过调用 ondragover 事件的 event.preventDefault() 方法：
+    <div id="content">
+        <div class="top" ondrop='drop(event)' ondragover="allowDrop(event)" ></div>
+        <div class="top" ondrop='drop(event)' ondragover="allowDrop(event)">
+            <img src="1.jpg" alt='图片' title="1.jpg" id='dragcontent' class="bottom" draggable="true"
+            ondragstart="drag(event)" >
+        </div>
+        
+    </div>
+    <script>
+
+        function drag(ev) {
+            console.log('投放开始');
+            console.log(ev.target.id)
+            ev.dataTransfer.setData("Text", ev.target.id);
+        }
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text"); //获取投放的数据
+            console.log(document.getElementById(data));
+            ev.target.appendChild(document.getElementById(data));
+            
+        }
+
+
+    </script>
+</body>
+
+</html>

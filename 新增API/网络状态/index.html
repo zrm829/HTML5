@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>网络状态</title>
+</head>
+<body>
+    <!-- 以前：我们可以通过window.navigator.onLine来检测当前网络的连接状态，返回一个Boolean值；
+    html5提供了两个事件，online和offline -->
+    <script>
+        console.log(window.navigator.onLine);
+        window.addEventListener('online',function(){
+            setTimeout(function(){
+                console.log("网络已连接");
+            },500)
+           
+        })
+        window.addEventListener('offline',function(){
+            setTimeout(function(){
+                console.log("网络已断开");
+            },500)
+        })
+
+    </script>
+</body>
+</html>

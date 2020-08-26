@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>文件读取</title>
+</head>
+<body>
+    <!-- 通过FileReader对象 可以读取本地存储的文件 -->
+    <!--
+    1.readAsText():读取文本文件(可以使用Txt打开的文件)，返回文本字符串，默认编码是UTF-8。
+    2.readAsBinaryString():读取任意类型的文件。返回二进制字符串。这个方法不是用来读取文件展示给用户看，而是存储文件。例如：读取文件的内容，获取二进制数据，传递给后台，后台接收了数据之后，再将数据存储。
+    3.readAsDataURL():读取文件获取一段以data开头的字符串，这段字符串的本质就是DataURL.DataURL是一种将文件(这个文件一般就是指图像或者能够嵌入到文档的文件格式)嵌入到文档的方案。DataURL是将资源转换为编码的字符串形式，并且将这些内容直接存储在url中>>优化网站的加载速度和执行效率。
+    4.abort():中断读取
+    5.onload()表示文件读取成功时触发，里面是一个用来接受文件读取对象的参数result，读取成功状态下就可以打印出这个参数。 
+    该对象常见应用在即时预览：
+    即时：当用户选择完图片之后就立刻进行预览的处理 >>onchange
+    预览：通过文件读取对象的readAsDataURL()完成。
+    以下是应用时的具体实现： -->
+    <input type="file" multiple>   
+    <div></div>
+    <script>
+        let file=document.querySelector('input');
+        console.dir (file);
+        file.onchange=function(){
+            // files 是一个 FileList 对象 ，来保存导入文件的信息
+            // console.log(this.files instanceof Array);   //fales
+            // console.log(file.files);  
+            console.log(this.files);
+            // 实例化一个FileReader对象
+            let reader=new FileReader();
+            console.dir(reader);
+            console.log(reader.readyState);  //结果：0  还没有加载任何数据.
+            reader.readAsText(this.files[0]);
+            // 文件读取完成后会自动放入一个result 属性中,
+            console.log(reader.readyState);  //结果：1   数据正在被加载.
+            // 中断文件的读取
+            // reader.onabort=function(){
+            //     console.log('文件读取中断'+reader.readyState); 
+            // }
+            // 文件读取完毕，并且存放到result中
+            reader.onload=function(){ 
+                console.log(reader.readyState);  //结果：2   已完成全部的读取请求.
+                document.querySelector('div').innerHTML=reader.result;
+            }
+        }
+    </script>
+</body>
+</html>

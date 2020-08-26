@@ -1,0 +1,8 @@
+HTML变化：big、center、font、s、u、frame等等
+html新增的属性:
+contenteditable属性（可以随时修改页面内容）
+hidden：让元素隐藏
+例：<h1 contenteditable hidden></h1>'
+
+Web 语义化：html5提供了一些新的标签，对于常见的元素，方便浏览器更加
+精准的分析页面，使代码更加规范化。

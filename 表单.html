@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Title</title>
+</head>
+<body>
+    <form action="1.php">
+        姓名:<input type="text"><br>
+        密码: <input type="password"><br>
+        邮箱:<input type="email"><br>    
+        网址:<input type="url"><br>
+        <input type="number" min="0" max="50" value="5" step="5"><br>
+        <input type="range" min="0" max="100" value="30" id="r"> 
+        <span id="f">30</span><br>
+         <!-- 日期 -ie浏览器不支持 -->
+        <input type="date">
+        <input type="week">
+        <input type="time"><br>
+        <!-- 日期时间文本框 -->
+        <input type="datetime-local"><br>
+        <!-- 搜索框 -->
+        <input type="search"><br>
+        <!-- 电话 -->
+        电话<input type="tel">
+        <!-- 颜色 -->
+        <input type="color">
+        <input type="submit">
+        <!-- required 必填项，不能为空 必须在提交表单之前填写-->
+        <input type="text" required='required'>
+
+
+    </form>
+    <script>
+       document.getElementById('r').onchange=function(){
+       document.getElementById('f').innerHTML=this.value;
+       }
+    </script>
+</body>
+</html>

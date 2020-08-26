@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>画板</title>
+    <style>
+        canvas{
+            background: pink;
+            margin: 50px 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- canvas设置宽度、高度只能设置成如下格式 -->
+    <canvas id="myCanvas" width='500px' height="500px"></canvas>
+    <script>
+        var mc=document.getElementById('myCanvas');
+        // 创建画布
+        // getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。
+        var cxt=mc.getContext('2d');
+        // 对画布的控制
+        //画布得缩放
+        // cxt.scale(1.5,0.5);
+        //画布得平移
+        // cxt.translate(20,50);
+        // 画布得旋转单位是弧度（2PI/360）
+        // cxt.rotate(30*(Math.PI/180));
+        // cxt.fillStyle="#FF0000";
+        // // 绘实心图
+        // cxt.fillRect(50,100,250,175);
+        // cxt.strokeStyle='red';
+        // // 绘制空心图
+        // cxt.strokeRect(100,200,250,175);
+        // // 清除指定的像素
+        // cxt.clearRect(60,150,100,80);
+        // 绘制线条
+        cxt.beginPath(); //开始路径
+        cxt.lineWidth='5';
+        cxt.strokeStyle='red';
+        cxt.moveTo(150,50); //开始坐标
+        cxt.lineTo(200,175);
+        cxt.lineTo(250,50);
+        cxt.lineTo(300,175);
+        cxt.lineTo(350,50);
+        cxt.closePath();  //闭合路径
+        cxt.stroke();   //填充边界色，以strokeStyle为准
+        cxt.fill();     //填充实心色
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="result"></div>
+
+<script>
+ 
+    if (localStorage.pagecount)
+        {
+        localStorage.pagecount=Number(localStorage.pagecount) +1;
+        }
+   else
+	{
+	localStorage.pagecount=1;
+    }
+    // 本地离线存储localStorage长期存储数据，浏览器关闭后数据不丢失
+    // 1. 一般简单的使用 typeof 或 instanceof 检测（这两种检测的不完全准确）
+    // 2. 完全准确的使用 原生js中的 Object.prototype.toString.call  或 jquery中的 $.type 检测
+    // var m=123;
+    // console.log(typeof m);
+    // // 引用java类型
+    // console.log(m instanceof Number);
+    // // 原生js
+    // console.log(Object.prototype.toString.call(m));
+    // //    console.log((localStorage.pagecount).typeof);
+    // // jQuery $.type(m);
+
+document.write("Visits: " + localStorage.pagecount + " time(s).");
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("lastname", "Gates");
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+} else {
+    document.getElementById("result").innerHTML = "抱歉！您的浏览器不支持 Web Storage ...";
+}
+</script>
+
+</body>
+</html>

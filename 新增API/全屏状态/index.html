@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>全屏</title>
+</head>
+<body>
+    <!-- HTML5允许用户任意标签实现全屏状态 -->
+    <!-- node.requestFullScreen() 开启全屏
+    node.cancelFullScreen() 取消全屏 -->
+
+    <!-- 兼容性：
+    webkit：webkitRequestFullScreen()   webkitCancelFullScreen()
+    Gecko: mozRequestFullScreen()  mozCancelFullScreen
+     ms： msRequestFullscreen()   msCancelFullscreen  s小写 -->
+    <div id="box"> 
+        <img src="./7f0b4e2e-2b26-427b-8de8-ac992785e4c1_0.png" alt="" width="600px" height="600px">
+        <button id="qp">全屏</button>
+        <button id="qxp">取消全屏</button>
+        <button id="isqp">是否全屏</button>
+    </div>
+    <script>
+        let box=document.getElementById('box');
+        let qp=document.getElementById('qp');
+        let qxp=document.getElementById('qxp');
+        let isqp=document.getElementById('isqp');
+        qp.onclick=function(){
+            if(box.requestFullScreen){
+                box.requestFullScreen();
+            }else if(box.webkitRequestFullScreen){
+                box.webkitRequestFullScreen();
+            }else if(box.mozRequestFullScreen){
+                box.mozRequestFullScreen()
+            }
+        }
+        // 取消全屏和元素没有关系 用 document
+        qxp.onclick=function(){
+            if(document.cancelFullScreen){
+                document.cancelFullScreen();
+            }else if(document.webkitCancelFullScreen){
+                document.webkitCancelFullScreen();
+            }else if(document.mozCancelFullScreen){
+                document.mozCancelFullScreen()
+            }
+        }
+
+        // 是否全屏
+       isqp.onclick=function(){
+               alert(document.webkitIsFullScreen);
+        }
+    </script>
+</body>
+</html>

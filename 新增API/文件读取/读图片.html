@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>生成缩略图</title>
+</head>
+<body>
+    <input type="file" multiple>
+    <img src="" alt="" width="500" height="500">
+    <script>
+        let file=document.querySelector('input');
+        let Img=document.querySelector('img');
+        file.onchange=function(){
+            let reader=new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload=function(){
+                // console.log(reader.result);
+                Img.src=reader.result;
+                document.cookie="imgUrl="+reader.result;
+                console.log(document.cookie);
+            }
+        }
+    </script>
+</body>
+</html>

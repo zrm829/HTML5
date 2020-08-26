@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Title</title>
+    <style>
+        canvas{
+            background: pink;
+            margin: 50px 400px;
+            position: relative;
+        }
+    </style>
+   
+</head>
+<body>
+    <canvas width="600px" height="600px" id="myCanvas"></canvas>
+    <script>
+        var cv=document.getElementById('myCanvas');
+        var cvx=cv.getContext('2d');
+        cvx.beginPath();
+        cvx.moveTo(300,300);
+        cvx.arc(300,300,100,0,45*Math.PI/180);
+        cvx.closePath();
+        cvx.stroke();
+        cvx.fillStyle='yellow';
+        cvx.fill();
+
+        cvx.beginPath();
+        cvx.moveTo(300,300);
+        cvx.arc(300,300,100,45*Math.PI/180,100*Math.PI/180);
+        cvx.closePath();
+        cvx.stroke();
+        cvx.fillStyle='red';
+        cvx.fill();
+
+        cvx.beginPath();
+        cvx.moveTo(300,300);
+        cvx.arc(300,300,100,100*Math.PI/180,190*Math.PI/180);
+        cvx.closePath();
+        cvx.stroke();
+        cvx.fillStyle='blue';
+        cvx.fill();
+
+        cvx.beginPath();
+        cvx.moveTo(300,300);
+        cvx.arc(300,300,100,190*Math.PI/180,230*Math.PI/180);
+        cvx.closePath();
+        cvx.stroke();
+        cvx.fillStyle='green';
+        cvx.fill();
+        cvx.beginPath();
+        cvx.moveTo(300,300);
+        cvx.arc(300,300,100,230*Math.PI/180,360*Math.PI/180);
+        cvx.closePath();
+        cvx.stroke();
+        cvx.fillStyle='black';
+        cvx.fill();
+    </script>
+</body>
+</html>

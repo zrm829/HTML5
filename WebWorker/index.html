@@ -1,0 +1,30 @@
+<html> 
+    <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <title>Test Web worker</title> 
+    <script type="text/JavaScript"> 
+        function init(){ 
+            var worker = new Worker('js/compute.js'); 
+            //event 参数中有 data 属性，就是子线程中返回的结果数据
+            worker.onmessage= function (event) { 
+                // 把子线程返回的结果添加到 div 上
+                document.getElementById("result").innerHTML += 
+                   event.data+"<br/>"; 
+            }; 
+        } 
+        // 在客户端的 compute.js 中，
+        // 只是简单的重复多次加和操作，
+        // 最后通过 postMessage 方法把结果返回给主线程，
+        // 目的就是等待一段时间。而在这段时间内，主线程不应该被阻塞，用户可以通过拖拽浏览器，变大缩小浏览器窗口等操作测试这一现象。
+        // 这个非阻塞主线程的结果就是 Web Workers 想达到的目的。
+    </script> 
+    </head> 
+    <body onload="init()"> 
+        <!-- Web Workers
+             为 Web 前端网页上的脚本提供了一种能在后台进程中运行的方法。
+             一旦它被创建，Web Workers 就可以通过 postMessage 向任务池发送任务请求，
+             执行完之后再通过 postMessage 返回消息给创建者指定的事件处理程序 ( 通过 onmessage 进行捕获 )。Web Workers 进程能够在不影响用户界面的情况下处理任务，并且，它还可以使用 XMLHttpRequest 来处理 I/O，但通常，后台进程（包括 Web Workers 进程）不能对 DOM 进行操作。如果希望后台程序处理的结果能够改变 DOM，
+            只能通过返回消息给创建者的回调函数进行处理。 -->
+        <div id="result"></div> 
+    </body> 
+</html>

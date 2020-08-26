@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>嵌套</title>
+    <style>
+        #novel{
+            width:200px;
+            margin:0 auto;
+        }
+        #novel #Img{
+            width: 100px;
+            height: 120px;
+        }
+        #Content{
+            position: relative;
+        }
+        #Content .area{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+        <!-- <area>元素可以看出半个<a>元素，这句话很关键，换句话说，有时候，我们可以使用<area>元素代替<a>元素。
+        <a>不支持嵌套 -->
+    <div id="novel">
+        <a href="https://read.fmx.cn/files/article/html/6/1/2/8/7/5/2/128752/2300074.html">
+            <img src="./eg_planets.jpg" alt="九星霸体诀" usemap='#Icon' id="Img">
+            <map name="Icon" id="Icon">
+                <area shape="rect" coords="0,0,215,260" href="https://read.fmx.cn/files/article/html/6/1/2/8/7/5/2/128752/index.html" alt="">
+            </map>
+            <div id="Content">
+                <!-- <h3> -->
+                    <!-- 在文字前面直接放置了一个裸的<area>元素，通过CSS设置覆盖文字实现的，相关HTML和CSS代码如下：
+                    但这样不兼容火狐
+
+                    脱离<map>裸露的<area>元素实际上也是可以点击跳转了，就像一个<a>链接元素一样，但是<area>元素不支持子元素，所以只能覆盖。但是，却支持伪元素，也就是，如果单看视觉表现，你也可以让标题文字借助:before等伪元素实现。
+
+                    然而，虽然主观功能都OK了，代码也很精炼，但是，这种直接使用<area>元素覆盖的方法还有一些局限，一是Firefox浏览器不支持（Firefox的<area>元素默认display:none，且无法重置）；另外一个问题就是无法使用键盘Tab索引访问，如果没有外面的<a>元素是可以的，有了之后，这种取巧的做法就不行了。
+
+                    所以，如果你的项目兼容性要求比较高，对无障碍访问要求也比较高，则建议使用透明图片覆盖的方式实现文字的链接嵌套，CSS不变，只要HTML稍微调整下就可以了，如下：
+                    -->
+                    <!-- <area href="https://read.fmx.cn/files/article/html/6/1/2/8/7/5/2/128752/index.html" alt="" class="area">
+                    九星霸体诀 -->
+                <!-- </h3> -->
+                <h4>
+                        <img src="./eg_planets.jpg" class="area" usemap="#mapTitle" style="opacity: 0;">
+                        九星霸体诀
+                </h4>
+                <map id="mapTitle" name="mapTitle">
+                    <area shape="rect" coords="0,0,200,21" href="https://read.fmx.cn/files/article/html/6/1/2/8/7/5/2/128752/index.html" target="_blank">
+                </map>
+            </div>
+          
+        </a>
+    </div>
+</body>
+</html>

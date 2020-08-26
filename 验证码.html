@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Title</title>
+    <style>
+        canvas{
+            background: black;
+            margin: 100px 500px;
+            position: relative;
+        
+        }
+    </style>
+</head>
+<body>
+    <!-- canvas设置宽度、高度只能设置成如下格式 -->
+    <canvas id="myCanvas" width='200px' height="50px"></canvas>
+    <script>
+        var mc=document.getElementById('myCanvas');
+        // 创建画布
+        // getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。
+        var cxt=mc.getContext('2d');
+        cxt.font='30px 宋体';
+        function rand(){
+             for(var i=0;i<4;i++){
+                var a='QWERTYUIOPASDFGHJKLZXCVBNM';
+                // 公式（Math.floor(Math.random()*(y+1-x)+x）
+                var rand=Math.floor(Math.random()*(a.length-1+1-0)+0);
+                var left=Math.floor(Math.random()*((i*50+30)+1-i*50)+i*50);
+                var top=Math.floor(Math.random()*(45+1-35)+35)
+                // 随机颜色
+                var r=Math.floor(Math.random()*256);
+                var g=Math.floor(Math.random()*256);
+                var b=Math.floor(Math.random()*256);            
+                cxt.fillStyle='rgb('+r+','+g+','+b+')';
+                //随机旋转角度
+                // var d=Math.floor(Math.random()*(3+1+3)-3);
+                // cxt.rotate(d*(Math.PI/180));
+                cxt.fillText(a[rand],left,top);
+           }
+        }
+        rand();
+        mc.onclick=function(){
+            cxt.clearRect(0,0,mc.width,mc.height);
+            rand();
+        };
+        
+    </script>
+</body>
+</html>
